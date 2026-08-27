@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achalay Mi Tucumana</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brown-dark: #3d1f0d;
+    --brown-mid: #6b3a1f;
+    --brown-light: #c8864a;
+    --cream: #f5ede3;
+    --cream-light: #faf5ef;
+    --gold: #d4a843;
+    --orange-btn: #c97d3a;
+    --text-dark: #2c1a0e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    background: var(--cream-light);
+  }
+
+  /* ========== NAVBAR ========== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 48px;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+
+  nav.transparent { background: transparent; }
+
+  nav.solid {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav-logo-text .brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brown-dark);
+  }
+
+  nav.transparent .nav-logo-text .brand,
+  nav.transparent .nav-logo-text .sub { color: #fff; }
+
+  .nav-logo-text .sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: 13px;
+    color: var(--brown-mid);
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--brown-dark);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  nav.transparent .nav-links a { color: #fff; }
+  .nav-links a:hover { color: var(--brown-light); }
+  nav.transparent .nav-links a:hover { color: var(--gold); }
+
+  /* ========== HERO ========== */
+  #inicio {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('26233fc6d5b16bff173deb735a860287.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    filter: brightness(0.5) saturate(0.85);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 24px;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    border-radius: 50px;
+    padding: 6px 22px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 28px;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 0;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-title-gold {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: block;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 6px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-sub-italic {
+    font-size: 15px;
+    color: rgba(255,255,255,0.82);
+    font-style: italic;
+    margin-bottom: 42px;
+    font-weight: 300;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeSlideUp 0.8s ease-out forwards;
+  }
+
+  .btn-primary {
+    background: var(--orange-btn);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Lato', sans-serif;
+  }
+  .btn-primary:hover { background: #b56c2a; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: var(--orange-btn);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { background: #b56c2a; transform: translateY(-1px); }
+
+.hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    animation: bounce-center 1.6s ease-in-out infinite;
+  }
+
+.hero-scroll span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+.bounce-arrow {
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+@keyframes bounce-center {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes pulse-soft {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); } /* Acá se agranda un 5% */
+    100% { transform: scale(1); }
+  }
+
+  @keyframes fadeSlideUp {
+    0% { 
+      opacity: 0; 
+      transform: translateY(40px); /* Arranca 40 píxeles más abajo */
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0); /* Termina en su posición original */
+    }
+  }
+
+  /* ========== SOBRE MI ========== */
+  #sobre-mi {
+    background: linear-gradient(135deg, #5c2a0e 0%, #3d1a08 100%);
+    padding: 72px 0;
+    display: flex;
+    align-items: stretch;
+    min-height: 560px;
+  }
+
+  .sobre-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sobre-text { color: #fff; }
+
+  .sobre-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 52px;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 4px;
+    line-height: 1.1;
+  }
+
+  .sobre-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 56px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sobre-name .sparkle { font-size: 32px; }
+
+  .sobre-text p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  .sobre-text p strong { color: #fff; font-weight: 700; }
+
+  .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 10px 22px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: background 0.2s;
+    animation: pulse-soft 2.5s infinite ease-in-out;
+  }
+  .ig-btn:hover { background: rgba(255,255,255,0.2); }
+
+  .ig-icon {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #fff;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sobre-img-wrap { position: relative; }
+
+  .sobre-img-wrap img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    height: 380px;
+  }
+
+  .sobre-img-caption {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ========== CATALOGO ========== */
+  #catalogo {
+    background: var(--cream-light);
+    padding: 72px 0;
+  }
+
+  .catalogo-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .catalogo-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .catalogo-badge {
+    display: inline-block;
+    border: 1.5px solid var(--brown-light);
+    border-radius: 50px;
+    padding: 5px 18px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--brown-mid);
+    margin-bottom: 16px;
+  }
+
+  .catalogo-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--brown-dark);
+    line-height: 1;
+  }
+
+  .catalogo-subtitle {
+    font-size: 15px;
+    color: var(--brown-mid);
+    text-align: right;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+
+  .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+  }
+
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+ .carousel-slide {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+ .carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: transparent; /* Esto vuelve invisible el texto viejo */
+  font-size: 0;       /* Esto achica el texto viejo para que no moleste */
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s, opacity 0.2s;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 1px 3px rgba(0,0,0,0.6));
+}
+
+ .carousel-nav:hover {
+    background: transparent; 
+    transform: translateY(-50%) scale(1.2); 
+  }
+
+  .carousel-nav.prev {
+    left: 8px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .carousel-nav.next {
+    right: 8px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .carousel-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255,255,255,0.9);
+  }
+
+  .product-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--orange-btn);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.03em;
+  }
+
+  .product-info { padding: 18px 18px 22px; }
+
+  .product-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    color: var(--brown-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: var(--brown-mid);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--orange-btn);
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .product-link:hover { gap: 8px; }
+
+  /* ========== CTA BANNER ========== */
+  .cta-banner {
+    max-width: 1200px;
+    margin: 56px auto;
+    padding: 0 48px;
+  }
+
+  .cta-inner {
+    background-image: url('mate_arg.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    padding: 40px 52px;
+  }
+
+  .cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30,10,0,0.72);
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    max-width: 520px;
+  }
+
+  .cta-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 44px;
+    color: #fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+  }
+
+  .cta-desc em { color: #fff; font-weight: 400; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--brown-dark);
+    color: rgba(255,255,255,0.75);
+    padding: 56px 48px 32px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer-logo-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--brown-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .footer-logo-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  .footer-tagline {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .footer-brand-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .footer-ig {
+    color: rgba(255,255,255,0.5);
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .footer-section h4 {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .footer-section ul { list-style: none; }
+  .footer-section ul li { margin-bottom: 10px; }
+  .footer-section ul a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-section ul a:hover { color: #fff; }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-watermark {
+    font-family: 'Dancing Script', cursive;
+    font-size: 120px;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 4px;
+  }
+
+  footer { position: relative; overflow: hidden; }
+
+@media (max-width: 768px) {
+    nav { 
+      padding: 10px 15px; 
+      flex-direction: row; 
+      justify-content: space-between;
+    }
+    .nav-logo-img { width: 35px; height: 35px; }
+    .nav-logo-text .brand { font-size: 16px; }
+    .nav-logo-text .sub { display: none; }
+    .nav-links { 
+      display: flex !important; 
+      gap: 12px; 
+    }
+    .nav-links a { font-size: 12px; }
+
+    .hero-title, .hero-title-gold { font-size: 38px !important; }
+    .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; justify-content: center; }
+
+    .sobre-inner {
+      grid-template-columns: 1fr !important;
+      padding: 0 24px;
+      gap: 30px;
+    }
+    .sobre-img-wrap { order: -1; } 
+    .sobre-img-wrap img { height: auto; max-height: 300px; }
+    .sobre-name { font-size: 42px; }
+
+    .products-grid {
+      grid-template-columns: 1fr !important;
+      padding: 0 20px;
+    }
+    .catalogo-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .catalogo-subtitle { text-align: center; max-width: 100%; }
+
+    .footer-inner {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+    }
+    .footer-logo, .footer-contact-item { justify-content: center; }
+  }
+</style>
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="transparent">
+  <a href="#inicio" class="nav-logo">
+    <img src="logo.png" alt="Achalay Logo" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="brand">Achalay</span>
+      <span class="sub">Mi Tucumana</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#sobre-mi">Sobre Mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Hecho con amor en Tucumán</div>
+    <h1 class="hero-title">Mates y Productos</h1>
+    <span class="hero-title-gold">de Madera Artesanales</span>
+    <p class="hero-sub">Diseños únicos y personalizados.</p>
+    <p class="hero-sub-italic">Pintados a mano ~ Hecho con amor en Tucumán.</p>
+    <div class="hero-buttons">
+      <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+      <a href="https://www.instagram.com/direct/t/108012067472660/?hl=es" class="btn-outline">Pedir mi mate 🧉</a>
+      <a href="#curado" class="btn-outline">Como curar mi mate</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubrí más</span>
+    <div class="bounce-arrow">↓</div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre-mi">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <h2 class="sobre-title">Hola, mi nombre es</h2>
+      <div class="sobre-name">Silvana</div>
+      <p>Soy la persona detrás de Achalaymi_tuc 🤍. Me encanta el arte en todas sus formas, unos ricos mates dulces y con yuyitos... aunque confieso que, de vez en cuando, también disfruto un buen café</p>
+      <p>Amo el solcito de otoño y de verano, sobre todo los atardeceres en mis valles. Vivir, disfrutar el aquí y ahora. 👀 Mi inspiración... todavía no sé bien de dónde viene, pero aparece y a veces, hace magia</p>
+      <p>Achalaymi_tuc llegó hace unos años como la necesidad de un lugar para crear, escapar, sentir y disfrutar 🌿</p>
+      <p><strong>Gracias por estar acá. Este espacio también es para vos. Quédate, acompáñame y seamos parte de esta magia. Bienvenid@ a Achalaymi_tuc 🤍</strong></p>
+      <a href="https://instagram.com/achalaymi_tuc" target="_blank" class="ig-btn">
+        <span class="ig-icon">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+        </span>
+        @achalaymi_tuc
+      </a>
+    </div>
+    <div class="sobre-img-wrap">
+      <img src="valles.jpg" alt="Mis valles" style="object-position: center center;">
+      <div class="sobre-img-caption">Mis valles 🏔</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURADO DE MATE -->
+<section id="curado" style="background:linear-gradient(180deg,rgba(107,58,31,0.5) 0%,rgba(150,100,60,0.35) 25%,rgba(200,134,74,0.25) 50%,rgba(230,200,170,0.3) 75%,rgba(245,237,227,0.7) 100%);min-height:100vh;display:flex;align-items:center;">
+  <div style="max-width:1200px;margin:0 auto;padding:60px 24px;text-align:center;">
+    <div style="display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:center;">
+      <div style="flex:1;min-width:300px;">
+        <img src="images/curado-mate.jpg.webp" alt="Curado de Mate de Calabaza" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+      </div>
+      <div style="flex:1;min-width:300px;text-align:left;">
+        <h2 style="font-family:'Dancing Script',cursive;font-size:32px;color:var(--brown-dark);margin-bottom:16px;">Cómo Curar tu Mate</h2>
+        
+        <h3 style="color:var(--brown-mid);font-size:16px;margin-top:20px;margin-bottom:8px;">Para Mate de Madera (Algarrobo, Calden, etc.)</h3>
+        <p style="color:var(--text-dark);font-size:15px;margin-bottom:8px;">El proceso de curado es importante para sellar los poros de la madera y garantizar durabilidad:</p>
+        <ol style="color:var(--text-dark);font-size:15px;text-align:left;padding-left:20px;margin-bottom:24px;">
+          <li><strong>Lava bien el mate con agua caliente</strong> (sin jabón) para quitar restos de polvo o barniz superficial.</li>
+          <li><strong>Unta el interior con grasa o aceite</strong> (de coco, manteca o aceite de cocina) esto sella los poros y evita que se raje.</li>
+          <li><strong>Rellena con yerba usada</strong> (puede ser de un mate anterior).</li>
+          <li><strong>Agrega agua caliente</strong> (no hirviendo) hasta cubrir la yerba.</li>
+          <li><strong>Deja reposar 24 a 48 horas.</strong></li>
+          <li><strong>Retira la yerba, lava bien y repite</strong> el proceso 1 o 2 veces más si el mate es nuevo o muy poroso.</li>
+        </ol>
+
+        <h3 style="font-family:'Dancing Script',cursive;font-size:32px;color:var(--brown-dark);margin-top:28px;margin-bottom:8px;">Cuida tu Madera, y Cuida su Historia</h3>
+        <h3 style="color:var(--brown-mid);font-size:16px;margin-top:20px;margin-bottom:8px;">Para mantener tu mate de madera en perfecto estado y prolongar su vida útil:</h3>
+        <ol style="color:var(--text-dark);font-size:15px;text-align:left;padding-left:20px;">
+          <li><strong>Lava con agua fría</strong> después de cada uso.</li>
+          <li><strong>Seca con un paño o con servilletas de papel</strong> inmediatamente.</li>
+          <li><strong>No seques al sol</strong> para evitar que la madera se raje o se decolorore.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGO -->
+<section id="catalogo">
+  <div class="catalogo-inner">
+    <div class="catalogo-header">
+      <div>
+        <div class="catalogo-badge"> CATÁLOGO </div>
+        <h2 class="catalogo-title">Nuestros Trabajos</h2>
+      </div>
+      <p class="catalogo-subtitle">Diseños únicos, estilo Frida, Animal Print, Mandalas y más</p>
+    </div>
+
+    <div class="filter-buttons" style="display:flex;gap:12px;justify-content:center;margin-bottom:30px;flex-wrap:wrap;">
+      <button class="filter-btn filter-all" onclick="filterProducts('all')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Todos</button>
+      <button class="filter-btn filter-mates" onclick="filterProducts('mates')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">🧉 Mates</button>
+      <button class="filter-btn filter-combos" onclick="filterProducts('combos')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Combos</button>
+      <button class="filter-btn filter-tablas" onclick="filterProducts('tablas')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Tablas</button>
+      <button class="filter-btn filter-deco" onclick="filterProducts('deco')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Deco</button>
+      <button class="filter-btn filter-canastos" onclick="filterProducts('canastos')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Canastos</button>
+      <button class="filter-btn filter-azucarera" onclick="filterProducts('azucarera')" style="padding:10px 20px;border:2px solid var(--brown-mid);background:transparent;color:var(--brown-mid);cursor:pointer;border-radius:20px;font-weight:500;transition:all 0.2s;">Azucareras</button>
+    </div>
+
+    <div class="products-grid">
+
+          <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-criollo.jpg.webp.webp" alt="Mate Criollo" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Criollo — Calabaza + Base de Cuero</div>
+          <p class="product-desc">Mate calabaza natural con base de cuero artesanal.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+  <div class="product-img-wrap">
+    <div class="carousel-container">
+      <div class="carousel-slides" data-carousel="set-perro-salchicha">
+        
+        <div class="carousel-slide active">
+          <img src="images/set-perro-salchicha-1.jpg.webp" alt="Set Perro Salchicha 1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        
+        <div class="carousel-slide">
+          <img src="images/set-perro-salchicha-2.jpg.webp" alt="Set Perro Salchicha 2" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="images/set-perro-salchicha-3.jpg.webp" alt="Set Perro Salchicha 3" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+      </div>
+      <button class="carousel-nav prev" onclick="prevSlide('set-perro-salchicha')">❮</button>
+      <button class="carousel-nav next" onclick="nextSlide('set-perro-salchicha')">❯</button>
+      <div class="carousel-dots">
+        <span class="carousel-dot active" onclick="goToSlide('set-perro-salchicha', 0)"></span>
+        <span class="carousel-dot" onclick="goToSlide('set-perro-salchicha', 1)"></span>
+        <span class="carousel-dot" onclick="goToSlide('set-perro-salchicha', 2)"></span>
+      </div>
+    </div>
+    <span class="product-tag">Combo</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Set Perro Salchicha</div>
+    <p class="product-desc">Porque sabemos que no hay mejor amigo y compañero fiel que nuestra mascota. Este set súper tierno y pintado a mano es perfecto para que ese amor incondicional te acompañe en cada mate.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-tablas">
+  <div class="product-img-wrap">
+    <img src="images/tabla-flor-durazno.jpg.webp" alt="Tabla Flor Durazno" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Tablas</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Tabla Flor Durazno</div>
+    <p class="product-desc">Tabla de madera artesanal inspirada en la delicadeza y los tonos suaves de las flores de durazno. Ideal para presentar tus picadas con un toque primaveral y muy elegante.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+ <div class="product-card product-canastos">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="canasto-1">
+              <div class="carousel-slide active">
+                <img src="images/canasto-cuero-1.jpg.webp" alt="Canasto Matero de Cuero 1" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/canasto-cuero-1-alt1.jpg.webp" alt="Canasto Matero de Cuero 1 - Foto 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/canasto-cuero-1-alt2.jpg.webp" alt="Canasto Matero de Cuero 1 - Foto 3" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('canasto-1')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('canasto-1')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('canasto-1', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('canasto-1', 1)"></span>
+              <span class="carousel-dot" onclick="goToSlide('canasto-1', 2)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Canastos</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Canasto Matero de Cuero</div>
+          <p class="product-desc">Lleva tu mate y tu termo cómodos. Diseño artesanal en cuero resistente y elegante.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-azucarera">
+  <div class="product-img-wrap">
+    <img src="images/azucarera-frida.jpg.webp" alt="Azucarera Frida" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Azucareras</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Azucarera Frida</div>
+    <p class="product-desc">Inspirada en el inconfundible estilo y los colores vibrantes de Frida Kahlo. Una pieza artesanal llena de fuerza, arte y personalidad para darle vida a tu cocina.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+   <div class="product-card product-canastos">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="canasto-2">
+              <div class="carousel-slide active">
+                <img src="images/canasto-cuero-2.jpg.webp" alt="Canasto Matero de Cuero 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/canasto-cuero-2-alt1.jpg.webp" alt="Canasto Matero de Cuero 2 - Foto 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('canasto-2')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('canasto-2')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('canasto-2', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('canasto-2', 1)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Canastos</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Canasto Matero de Cuero</div>
+          <p class="product-desc">Lleva tu mate cómodo a cualquier lado, hasta en el auto. Perfecto para los que disfrutan del mate en movimiento.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-azucarera">
+  <div class="product-img-wrap">
+    <img src="images/azucarera-flor-durazno.jpg.webp" alt="Azucarera Flor de Durazno" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Azucareras</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Azucarera Flor de Durazno</div>
+    <p class="product-desc">Diseño delicado inspirado en los tonos suaves y primaverales de las flores de durazno. Un detalle hermoso, cálido y artesanal para endulzar tus mañanas.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+<div class="product-card product-combo">
+  <div class="product-img-wrap">
+    <div class="carousel-container">
+      <div class="carousel-slides" data-carousel="tabla-mate-personalizado">
+        
+        <div class="carousel-slide active">
+          <img src="images/combo-personalizado-1.jpg.webp" alt="Combo Tabla y Mate Personalizado 1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        
+        <div class="carousel-slide">
+          <img src="images/combo-personalizado-2.jpg.webp" alt="Combo Tabla y Mate Personalizado 2" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="images/combo-personalizado-3.jpg.webp" alt="Combo Tabla y Mate Personalizado 3" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+      </div>
+      <button class="carousel-nav prev" onclick="prevSlide('tabla-mate-personalizado')">❮</button>
+      <button class="carousel-nav next" onclick="nextSlide('tabla-mate-personalizado')">❯</button>
+      <div class="carousel-dots">
+        <span class="carousel-dot active" onclick="goToSlide('tabla-mate-personalizado', 0)"></span>
+        <span class="carousel-dot" onclick="goToSlide('tabla-mate-personalizado', 1)"></span>
+        <span class="carousel-dot" onclick="goToSlide('tabla-mate-personalizado', 2)"></span>
+      </div>
+    </div>
+    <span class="product-tag">Combo</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Tabla + Mate Personalizado</div>
+    <p class="product-desc">¡Armá el set que siempre soñaste! Elegí tu diseño favorito, colores y motivos para personalizar tanto la tabla como el mate. Un regalo (o autorregalo) único hecho 100% a tu medida.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+      
+
+      <div class="product-card product-combo">
+  <div class="product-img-wrap">
+    <div class="carousel-container">
+      <div class="carousel-slides" data-carousel="set-personalizado-llamas">
+        
+        <div class="carousel-slide active">
+          <img src="images/set-llamas-1.jpg.webp" alt="Set Personalizado Llamas 1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        
+        <div class="carousel-slide">
+          <img src="images/set-llamas-2.jpg.webp" alt="Set Personalizado Llamas 2" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        
+        <div class="carousel-slide">
+          <img src="images/set-llamas-3.jpg.webp" alt="Set Personalizado Llamas 3" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="images/set-llamas-4.jpg.webp" alt="Set Personalizado Llamas 4" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+      </div>
+      <button class="carousel-nav prev" onclick="prevSlide('set-personalizado-llamas')">❮</button>
+      <button class="carousel-nav next" onclick="nextSlide('set-personalizado-llamas')">❯</button>
+      <div class="carousel-dots">
+        <span class="carousel-dot active" onclick="goToSlide('set-personalizado-llamas', 0)"></span>
+        <span class="carousel-dot" onclick="goToSlide('set-personalizado-llamas', 1)"></span>
+        <span class="carousel-dot" onclick="goToSlide('set-personalizado-llamas', 2)"></span>
+        <span class="carousel-dot" onclick="goToSlide('set-personalizado-llamas', 3)"></span>
+      </div>
+    </div>
+    <span class="product-tag">Combo</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Set Personalizado: Azucarera + Mate + Tabla + Cuchara</div>
+    <p class="product-desc">Un equipo matero completísimo y lleno de vida. Pintado a mano con simpáticos y coloridos diseños de llamas, inspirados en la alegría de nuestro norte. ¡Ideal para armar un rincón matero único!</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-combo">
+  <div class="product-img-wrap">
+    <img src="images/azucarera-cuchara.jpg.webp" alt="Combo Azucarera y Cuchara" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Combos</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Azucarera + Cuchara</div>
+    <p class="product-desc">Un set ideal para organizar tu cocina con calidez. Esta azucarera de madera mantiene el azúcar protegida y viene con su cuchara artesanal. ¡Podés pedirla personalizada con el diseño que más te guste!</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-combo">
+  <div class="product-img-wrap">
+    <img src="images/tabla-picadas-laurel-cuchara.jpg.webp" alt="Combo Tabla Laurel y Cuchara" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Combo</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Combo Laurel: Tabla + Cuchara de madera</div>
+    <p class="product-desc">Un set esencial para tus picadas. Incluye una tabla de madera de laurel de gran resistencia y una cuchara artesanal a juego, ideales para servir quesos y copetines con estilo.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-tablas">
+  <div class="product-img-wrap">
+    <img src="images/tabla-animal-print.jpg.webp" alt="Tabla Animal Print" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Tablas</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Tabla Animal Print</div>
+    <p class="product-desc">Tabla de madera artesanal pintada a mano con un moderno diseño animal print. El detalle perfecto para darle un toque salvaje y original a tus picadas.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-deco">
+  <div class="product-img-wrap">
+    <img src="images/portasahumerio-flor-durazno.jpg.webp" alt="Portasahumerio Flor Durazno" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Deco</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Portasahumerio Flor Durazno</div>
+    <p class="product-desc">Diseño delicado inspirado en la belleza y los tonos suaves de las flores de durazno. Un detalle sutil y primaveral para acompañar tus aromas favoritos.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-tablas">
+  <div class="product-img-wrap">
+    <img src="images/tabla-otono.jpg.webp" alt="Tabla Otoño" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Tablas</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Tabla Otoño</div>
+    <p class="product-desc">Diseño artesanal con colores cálidos inspirados en la belleza del otoño. Perfecta para aportar un toque rústico y acogedor a tus presentaciones.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-deco">
+  <div class="product-img-wrap">
+    <img src="images/portasahumerio-cielo.jpg.webp" alt="Portasahumerio Cielo" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Deco</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Portasahumerio Cielo</div>
+    <p class="product-desc">Diseño inspirado en la serenidad y los tonos del cielo abierto. Ideal para acompañar tus momentos de relajación y elevar la energía de tus espacios.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-deco">
+  <div class="product-img-wrap">
+    <img src="images/portasahumeriofloreado.jpg.webp" alt="Portasahumerio" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Deco</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Portasahumerio floreado</div>
+    <p class="product-desc">Ideal para disfrutar de sahumerios con relajantes aromas florales. Un detalle decorativo que aporta armonía y frescura a cualquier ambiente.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-tablas">
+  <div class="product-img-wrap">
+    <img src="images/tabla-floreada.jpg.webp" alt="Tabla Floreada" style="width:100%;height:100%;object-fit:cover;">
+    <span class="product-tag">Tablas</span>
+  </div>
+  <div class="product-info">
+    <div class="product-name">Tabla Floreada</div>
+    <p class="product-desc">Tabla de madera artesanal con delicados motivos florales pintados a mano. Aporta un toque primaveral y alegre a tus espacios.</p>
+    <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+  </div>
+</div>
+
+      <div class="product-card product-tablas">
+        <div class="product-img-wrap">
+          <img src="images/tabla-ojo-turco.jpg.webp" alt="Tabla Ojo Turco" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Tablas</span>
+      </div>
+     <div class="product-info">
+        <div class="product-name">Tabla Ojo Turco</div>
+        <p class="product-desc">Tabla de madera artesanal pintada a mano con diseño de ojo turco. Ideal para decorar o servir.</p>
+        <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+      </div>
+    </div>
+
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-camioneros.jpg.webp" alt="Mates Camioneros de Algarrobo" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mates Camioneros de Algarrobo</div>
+          <p class="product-desc">Especial para los que les gusta largas tardes de mate. Pintado a mano con orgullo y detalle.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/mate-tabla.jpg.webp" alt="Mate + Tabla Personalizada" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate + Tabla Personalizada 100%</div>
+          <p class="product-desc">Combo único: mate pintado a mano + tabla de madera personalizada. 100% artesanal.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/mate-tabla-animalprint.jpg.webp" alt="Set de Mate más Tabla Animal Print" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Set de Mate más Tabla</div>
+          <p class="product-desc">Set animal print con mate y tabla de madera. Diseño único y artesanal.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/tabla-cuencos.jpg.webp" alt="Tabla más Cuencos" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla más Cuencos</div>
+          <p class="product-desc">Tabla personalizada con cuencos personalizados. Diseño artesanal único.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/tabla-picar-cuenco-mate.jpg.webp" alt="Tabla para picar personalizada con Cuenco más Mate" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla para picar personalizada con Cuenco más Mate</div>
+          <p class="product-desc">Personalizado floreado. Diseño artesanal único.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/tabla-picar-cuenco-portasahumerio.jpg.webp" alt="Tabla para picar personalizada con Cuenco más Portasahumerio" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla para picar personalizada con Cuenco más Portasahumerio</div>
+          <p class="product-desc">Personalizado floreado. Diseño artesanal único.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-combo">
+        <div class="product-img-wrap">
+          <img src="images/tabla-picar-cuenco-mate-2.jpg.webp" alt="Tabla para picar personalizada con Cuenco más Mate" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Combo</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla para picar personalizada con Cuenco más Mate</div>
+          <p class="product-desc">Personalizado floreado. Diseño artesanal único.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-argento.jpg.webp" alt="Mate Argento" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Argento</div>
+          <p class="product-desc">Para los que llevan Argentina en el corazón. Diseño pintado a mano con amor.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-floreado.jpg.webp" alt="Mate Floreado" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Floreado</div>
+          <p class="product-desc">Set completo mateño pintado a mano. El regalo ideal para los amantes del mate.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-homero.jpg.webp" alt="Mate Homero" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Homero</div>
+          <p class="product-desc">El compañero perfecto para tomar mates mientras miras Los Simpson. ¡Mmm, mate delicioso!</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <img src="images/mate-frida.jpg.webp" alt="Mate Frida" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Frida</div>
+          <p class="product-desc">Inspirado en el estilo de Frida Kahlo. Colores vibrantes y diseño pintado a mano con amor.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-mate">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="mate-imperial-algarrobo">
+              <div class="carousel-slide active">
+                <img src="images/mate-imperial-algarrobo.jpg.webp" alt="Mate Imperial de Algarrobo" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/mate-imperial-algarrobo-alt1.jpg.webp" alt="Mate Imperial de Algarrobo - Foto 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('mate-imperial-algarrobo')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('mate-imperial-algarrobo')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('mate-imperial-algarrobo', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('mate-imperial-algarrobo', 1)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Mate</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Mate Imperial de Algarrobo</div>
+          <p class="product-desc">Mate floral con diseño artesanal. Pintado a mano con amor y detalles únicos.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <img src="images/portasahumerio.jpg.webp" alt="Portasahumeries Artesanal" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Portasahumeries Artesanal</div>
+          <p class="product-desc">Portasahumeries de madera pintado a mano. Arte y aroma para tu hogar.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <img src="images/portasahumerio-2.jpg.webp" alt="Portasahumeries Artesanal" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Portasahumeries Artesanal</div>
+          <p class="product-desc">Portasahumeries de madera pintado a mano. Arte y aroma para tu hogar.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <img src="images/portasahumerio-3.jpg.webp" alt="Portasahumeries Artesanal" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Portasahumeries Artesanal</div>
+          <p class="product-desc">Portasahumeries de madera pintado a mano. Arte y aroma para tu hogar.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="portasahumerio-personalizado">
+              
+              <div class="carousel-slide active">
+                <img src="images/porta-sahumerios-personalizado.jpg.webp" alt="Porta sahumerios personalizado 1" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              
+              <div class="carousel-slide">
+                <img src="images/porta-sahumerios-personalizado-2.jpg.webp" alt="Porta sahumerios personalizado 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              
+              <div class="carousel-slide">
+                <img src="images/porta-sahumerios-personalizado-3.jpg.webp" alt="Porta sahumerios personalizado 3" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+
+              <div class="carousel-slide">
+                <img src="images/porta-sahumerios-personalizado-4.jpg.webp" alt="Porta sahumerios personalizado 4" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('portasahumerio-personalizado')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('portasahumerio-personalizado')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('portasahumerio-personalizado', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerio-personalizado', 1)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerio-personalizado', 2)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerio-personalizado', 3)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Porta sahumerios</div>
+          <p class="product-desc">Porta sahumerios personalizados de lo que pidan. Diseño artesanal único.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="portasahumerios-animalprint">
+              <div class="carousel-slide active">
+                <img src="images/portasahumerios-animalprint.jpg.webp" alt="Portasahumerios Estilo Animal Print" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/portasahumerios-animalprint-alt1.jpg.webp" alt="Portasahumerios Estilo Animal Print - Foto 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('portasahumerios-animalprint')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('portasahumerios-animalprint')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('portasahumerios-animalprint', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerios-animalprint', 1)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Portasahumerios Animal Print</div>
+          <p class="product-desc">Estilo animal print. Diseño artesanal pintado a mano.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-deco">
+        <div class="product-img-wrap">
+          <div class="carousel-container">
+            <div class="carousel-slides" data-carousel="portasahumerios-ojturco">
+              <div class="carousel-slide active">
+                <img src="images/portasahumerio-ojoturco.jpg.webp" alt="Portasahumerio Ojo Turco" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/portasahumerio-ojoturco-alt1.jpg.webp" alt="Portasahumerio Ojo Turco - Foto 2" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div class="carousel-slide">
+                <img src="images/portasahumerio-ojoturco-alt2.jpg.webp" alt="Portasahumerio Ojo Turco - Foto 3" style="width:100%;height:100%;object-fit:cover;">
+              </div>
+            </div>
+            <button class="carousel-nav prev" onclick="prevSlide('portasahumerios-ojturco')">❮</button>
+            <button class="carousel-nav next" onclick="nextSlide('portasahumerios-ojturco')">❯</button>
+            <div class="carousel-dots">
+              <span class="carousel-dot active" onclick="goToSlide('portasahumerios-ojturco', 0)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerios-ojturco', 1)"></span>
+              <span class="carousel-dot" onclick="goToSlide('portasahumerios-ojturco', 2)"></span>
+            </div>
+          </div>
+          <span class="product-tag">Deco</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Portasahumerio Ojo Turco</div>
+          <p class="product-desc">Ojo turco que te cuida. Diseño artesanal pintado a mano.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-tablas">
+        <div class="product-img-wrap">
+          <img src="images/tablas-artesanales.jpg.webp" alt="Tabla artesanal" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Tablas</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla artesanal</div>
+          <p class="product-desc">Tablas de madera pintadas a mano con diseños únicos. Decorativas y funcionales.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+
+      <div class="product-card product-tablas">
+        <div class="product-img-wrap">
+          <img src="images/tabla-personalizada.jpg.webp" alt="Tabla artesanal personalizada" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">Tablas</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">Tabla artesanal</div>
+          <p class="product-desc">Tabla personalizada a mano. Diseño único y artesanal, perfecta para servir o decorar.</p>
+          <a href="https://www.instagram.com/achalaymi_tuc/?hl=es" target="_blank" class="product-link">Ver más →</a>
+        </div>
+      </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <div class="cta-title">¿Querés el tuyo?</div>
+      <p class="cta-desc">Si buscás un mate que se banque todos los días, una tabla para el asado o algo para decorar la casa, estás en el lugar correcto. <em>No hacemos cosas en serie</em>; preferimos charlar con vos, ver qué diseño el que mas te guste y hacerlo realidad. Mandanos un mensaje y contanos qué tenés ganas de armar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-circle">
+          <img src="logo.png" alt="Logo">
+        </div>
+      </div>
+      <div class="footer-tagline">Sigamos conectados</div>
+      <p class="footer-brand-desc">Artesanías únicas pintadas a mano desde Tucumán para el mundo.</p>
+      <a href="https://instagram.com/achalaymi_tuc" target="_blank" class="footer-ig">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(255,255,255,0.5)"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-section">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre Mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" style="flex-shrink:0;margin-top:1px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+        @achalaymi_tuc
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" style="flex-shrink:0;margin-top:1px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Barrio El Portal del Sol,<br>Las Talitas, Tucumán (CP 4101)
+      </div>
+      <a href="https://maps.app.goo.gl/JxAjF8DtYo7Lj2xx6" target="_blank" style="display:inline-block;margin-top:12px;padding:10px 20px;background:var(--orange-btn);color:#fff;text-decoration:none;border-radius:50px;font-size:14px;font-weight:700;transition:background 0.2s;border:none;cursor:pointer;">Ver ubicación</a>
+    </div>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-bottom">
+      <span>© 2024 Achalaymi_tuc · Hecho con ❤️ en Tucumán</span>
+      <span>Todos los diseños son únicos y pintados a mano</span>
+    </div>
+  </div>
+
+  <div class="footer-watermark">Achalaymi_tuc</div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  function updateNav() {
+    if (window.scrollY > 60) {
+      navbar.classList.remove('transparent');
+      navbar.classList.add('solid');
+    } else {
+      navbar.classList.remove('solid');
+      navbar.classList.add('transparent');
+    }
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+ function filterProducts(filter) {
+    const products = document.querySelectorAll('.product-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    
+    buttons.forEach(btn => btn.style.background = 'transparent');
+    buttons.forEach(btn => btn.style.color = 'var(--brown-mid)');
+    
+    if (filter === 'all') {
+      document.querySelector('.filter-all').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-all').style.color = '#fff';
+      products.forEach(product => product.style.display = 'block');
+    } else if (filter === 'mates') {
+      document.querySelector('.filter-mates').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-mates').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-mate')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    } else if (filter === 'combos') {
+      document.querySelector('.filter-combos').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-combos').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-combo')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    } else if (filter === 'tablas') {
+      document.querySelector('.filter-tablas').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-tablas').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-tablas')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    } else if (filter === 'deco') {
+      document.querySelector('.filter-deco').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-deco').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-deco')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    } else if (filter === 'canastos') {
+      document.querySelector('.filter-canastos').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-canastos').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-canastos')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    } else if (filter === 'azucarera') {
+      document.querySelector('.filter-azucarera').style.background = 'var(--brown-mid)';
+      document.querySelector('.filter-azucarera').style.color = '#fff';
+      products.forEach(product => {
+        if (product.classList.contains('product-azucarera')) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  }
+
+  function prevSlide(carouselId) {
+    const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.closest('.product-img-wrap').querySelectorAll('.carousel-dot');
+    
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    let newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    
+    slides[currentIndex].classList.remove('active');
+    slides[newIndex].classList.add('active');
+    dots[currentIndex].classList.remove('active');
+    dots[newIndex].classList.add('active');
+  }
+
+  function nextSlide(carouselId) {
+    const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.closest('.product-img-wrap').querySelectorAll('.carousel-dot');
+    
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    let newIndex = (currentIndex + 1) % slides.length;
+    
+    slides[currentIndex].classList.remove('active');
+    slides[newIndex].classList.add('active');
+    dots[currentIndex].classList.remove('active');
+    dots[newIndex].classList.add('active');
+  }
+
+  function goToSlide(carouselId, slideIndex) {
+    const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.closest('.product-img-wrap').querySelectorAll('.carousel-dot');
+    
+    const currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    
+    slides[currentIndex].classList.remove('active');
+    slides[slideIndex].classList.add('active');
+    dots[currentIndex].classList.remove('active');
+    dots[slideIndex].classList.add('active');
+  }
+
+
+</script>
+
+</body>
+</html>
